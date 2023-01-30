@@ -16,11 +16,12 @@ import { states as defaultStates } from '../utils/data';
 
 const useStyles = makeStyles({
     formControl: {
-        //padding: 80,
+
+
     },
     fields: {
         width: '100%',
-        marginBottom: 10,
+        marginBottom: 40,
         borderWidth: 1,
         borderColor: 'red',
         textAlign: 'left',
@@ -98,7 +99,7 @@ export default function Task() {
         }
 
         if (!error) {
-            console.log(tasks)
+            console.log({ tasks })
             tasks.push({
                 id: uuidv4(),
                 name,
@@ -106,6 +107,9 @@ export default function Task() {
                 deadline,
             })
             localStorage.setItem('tasks', JSON.stringify(tasks));
+            setName('')
+            setState(SELECT_DEFAULT)
+            setDeadline('')
 
         }
 
@@ -114,7 +118,7 @@ export default function Task() {
     return (
         <Grid container>
             <Grid item>
-                <FormControl fullWidth className={classes.formControl}>
+                <FormControl fullWidth sx={{marginBottom: 4}} className={classes.formControl}>
                     <TextField
                         data-testid='test-name-field'
                         error={nameError}
@@ -127,7 +131,7 @@ export default function Task() {
                     />
                 </FormControl>
 
-                <FormControl fullWidth className={classes.formControl}>
+                <FormControl fullWidth sx={{marginBottom: 4}} className={classes.formControl}>
                     <TextField
                         data-testid='test-deadline-field'
                         error={deadlineError}
@@ -140,7 +144,7 @@ export default function Task() {
                     />
                 </FormControl>
 
-                <FormControl fullWidth className={classes.formControl}>
+                <FormControl fullWidth sx={{marginBottom: 4}} className={classes.formControl}>
                     <InputLabel id="demo-simple-select-label">State</InputLabel>
                     <Select
                         data-testid='test-state-field'
