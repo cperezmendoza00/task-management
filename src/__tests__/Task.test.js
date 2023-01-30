@@ -21,7 +21,7 @@ describe('Create task', () => {
 
       describe('validate form and save task', () => {
         
-        it('should create and show an api key successfully', async () => {
+        it('should show error class when clicking on save and the fields are empty', async () => {
             renderComponent(<Task />)
 
             expect(screen.getByTestId('test-name-field').firstChild).not.toHaveClass('Mui-error')
